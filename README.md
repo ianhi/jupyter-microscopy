@@ -12,7 +12,7 @@ choose points of interest and output files of the points: [laser pointer](https:
 
 ## Why?
 
-I prefer python over ImageJ for analyzing microscopy images, but I really miss the nice interactive image viewing provided imagej. The point of this repo is keep all the microscopy image tools I might make in a single place. I'll strive to replicate the most useful manual interaction tools provided by ImageJ in such a way to be useful to an advanced python user. Three key goals:
+I prefer python over ImageJ/FIJI for analyzing microscopy images, but I really miss the nice interactive image viewing provided imagej. The point of this repo is keep all the microscopy image tools I might make in a single place. I'll strive to replicate the most useful manual interaction tools provided by ImageJ in such a way to be useful to an advanced python user. Three key goals:
 1. Limit distance to data
    - Should always be trivial to extract the data from manual interaction to a numpy array
 2. Should *feel* good to use
@@ -23,11 +23,22 @@ I prefer python over ImageJ for analyzing microscopy images, but I really miss t
    
 
 
-## Design
+## ROADMAP
+Mostly created by looking through the options that FIJI provides and picking out the ones that seem useful and that aren't already sastified by something like scikit-image or just generic numpy functions
 
-- Use [PIMS](https://github.com/soft-matter/pims) to store image data
-   - no reason to reinvent the wheel on this on
-- components hopefully slot in well together
+
+- [ ] Adjust image brightness and contrast
+    - skimage auto isn't always great, get whatever FIJI auto does
+- [ ] Image Stack viewer
+    - Use [PIMS](https://github.com/soft-matter/pims) to store image data
+- [ ] Region of interest selectors
+    - ipysegment probably will be helpful for this. 
+    - also see https://github.com/ideonate/jupyter-innotater for bounding boxes
+- [ ] Basic image annotation (i.e. mspaint drawing)
+    - surely this already exists?
+
+
+Need to make sure that everything exposes the relevant variables in such a way that they can be `jslink`ed together in order to achieve goal 2. 
 
 
 
