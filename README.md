@@ -29,3 +29,28 @@ I prefer python over ImageJ for analyzing microscopy images, but I really miss t
    - no reason to reinvent the wheel on this on
 - components hopefully slot in well together
 
+
+
+## Setting up a conda environment
+
+I used the following bash commands to create envs. Add them to your `.bashrc`, do `source ~/.bashrc` and then run `jlab-env-full micro`
+
+```bash
+jlab-env-basic ()
+{
+    conda create -n $1 --override-channels --strict-channel-priority -c conda-forge -c anaconda jupyterlab nodejs python mamba -y
+     conda activate $1
+}
+
+jlab-env-full ()
+{  
+  conda create -n $1 python -y
+  conda activate $1
+  conda install -c conda-forge mamba -y
+  mamba install -c conda-forge jupyterlab nodejs scipy matplotlib numpy ipympl pandas -y
+  pip install jupyterlab-git
+  jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
+  jupyter lab build --name=$1
+}
+
+```
