@@ -1,0 +1,5 @@
+{
+  "load_extensions": {
+    "ipymicro_base/extension": true
+  }
+}
